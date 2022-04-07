@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FooterComponent } from './footer/footer.component';
+import { TopNavBarComponent } from './top-nav-bar/top-nav-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [
-    NavBarComponent
+    FooterComponent,
+    TopNavBarComponent
   ],
   imports: [
     CommonModule,
     MatIconModule
   ],
   exports:[
-    NavBarComponent
+    FooterComponent,
+    TopNavBarComponent
   ]
 })
-export class TopNavModule { }
+export class NavbarsModule { }
