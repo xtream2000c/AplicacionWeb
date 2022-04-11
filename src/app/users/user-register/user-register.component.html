@@ -4,26 +4,26 @@
             <h2>Registro</h2>
         </div>
         <div class="infoFormulario">
-            <form action="index.html" method="post" name="formulario" id="formulario">
+            <form name="formulario" id="formulario">
                 <label for="nombre">Nombre</label>
                 <br>
-                <input type="text" name="nombre" id="nombre">
+                <input type="text" name="name" [(ngModel)]="name">
                 <br>
                 <label for="email">E-mail</label>
                 <br>
-                <input type="text" name="email" id="email">
+                <input type="text" name="email" id="email" [(ngModel)]="email">
                 <br>
                 <label for="usuario">Usuario</label>
                 <br>
-                <input type="text" name="usuario" id="usuario">
+                <input type="text" name="username" id="usuario" [(ngModel)]="username">
                 <br>
                 <label for="contrasena">Contraseña </label>
                 <br>
-                <input type="password" name="contrasena" id="contrasena">
+                <input type="password" name="password" id="contrasena" [(ngModel)]="password">
                 <br>
                 <br>
                 <input type="button" id="volver" onclick="location.href='index.html'" value="Volver">
-                <input type="submit" name="submit" id="submit">
+                <button (click)="registerUser()">Guardar</button>
             </form>
         <div id="errores"></div>
         </div>

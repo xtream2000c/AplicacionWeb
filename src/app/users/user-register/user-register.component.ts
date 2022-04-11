@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/components/models/users';
+import { userService } from '../../components/services/userService/user-form-service.service';
 
 @Component({
   selector: 'app-user-register',
@@ -10,9 +12,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserRegisterComponent implements OnInit {
 
-  constructor() { }
+   user = new User;
+   name : string;
+   email : string;
+   username : string;
+   password : string;
+
+  constructor(private userService: userService) { }
 
   ngOnInit(): void {
+  }
+
+  registerUser(){
+    console.log(this.name);
+    console.log(this.email);
+    console.log(this.username);
+    console.log(this.password);
+    this.user.name = this.name;
+    this.user.email = this.email;
+    this.user.username = this.username;
+    this.user.password = this.password;
+
+    console.log(this.user);
+
+    this.userService.guardarUser(this.user).subscribe(data => {
+      alert('Guardado exitosamente');
+    })
   }
 
 }
