@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/components/models/users';
-import { userService } from 'src/app/components/services/userService/user-form-service.service';
+import { User } from 'src/app/core/models/users';
+import { userService } from 'src/app/core/services/userService/user-form-service.service';
 
 @Component({
   selector: 'app-user-login',
