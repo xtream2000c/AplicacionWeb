@@ -25,7 +25,7 @@ login(User: User): Observable<User> {
 }
 
 errorHandler(error: HttpErrorResponse){
-  return throwError(error.message || "Server Error");
+  return throwError(error.status);
 }
 
 eliminarUser(id:number): Observable<User> {

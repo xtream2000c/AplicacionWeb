@@ -32,9 +32,15 @@ export class UserLoginComponent implements OnInit {
       location.href='profile';
     },
     error=>{
-      alert('Usuario no encontrado');
+      console.log(error);
+      switch(error){
+        case 400:
+          alert('No se ha introducido usuario o contraseña');
+        break;
+        case 404:
+          alert('Usuario no encontrado');
+        break;
+      }
     })
-
   }
-
 }
