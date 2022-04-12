@@ -9,10 +9,26 @@ import { Component, OnInit } from '@angular/core';
   }
 })
 export class UserProfileComponent implements OnInit {
+  
+  userData:string;
+  name : string;
+  email : string;
+  username : string;
+  password : string;
+
 
   constructor() { }
 
   ngOnInit(): void {
+    this.userData = JSON.parse(sessionStorage.getItem('user'));
+    
+    this.name=this.userData['name'];
+    this.email=this.userData['email'];
+    this.username=this.userData['username'];
+    this.password=this.userData['password'];
+    
   }
+
+
 
 }

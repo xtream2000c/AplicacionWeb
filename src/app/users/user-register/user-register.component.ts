@@ -24,16 +24,10 @@ export class UserRegisterComponent implements OnInit {
   }
 
   registerUser(){
-    console.log(this.name);
-    console.log(this.email);
-    console.log(this.username);
-    console.log(this.password);
     this.user.name = this.name;
     this.user.email = this.email;
     this.user.username = this.username;
     this.user.password = this.password;
-
-    console.log(this.user);
 
     this.userService.guardarUser(this.user).subscribe(data => {
       alert('Guardado exitosamente');

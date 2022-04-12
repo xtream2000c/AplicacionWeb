@@ -25,18 +25,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register" id="registro">
+                    <a class="nav-link" [href]="navItem1">
                         <div class="d-inline-flex align-items-center">
-                            <span class="material-icons">person_add</span>
-                            <span class="my-auto ms-2">Registrarse</span>
+                            <span class="material-icons">{{navItem1Icon}}</span>
+                            <span class="my-auto ms-2">{{navItem1Text}}</span>
                         </div>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login" id="login">
+                    <a class="nav-link" [href]="navItem2" id="navItem2" (click)="clear()">
                         <div class="d-inline-flex align-items-center">
-                            <span class="material-icons">person</span>
-                            <span class="my-auto ms-2">Iniciar Sesion</span>
+                            <span class="material-icons">{{navItem2Icon}}</span>
+                            <span class="my-auto ms-2">{{navItem2Text}}</span>
                         </div>
                     </a>
                 </li>

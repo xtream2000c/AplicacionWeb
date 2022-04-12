@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { User } from '../../models/users';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { User } from '../../models/users';
 export class userService {
 
   myAppUrl = 'http://localhost/';
-  myApiUrl = 'ProyectoFinal/ProyectoFinal-Back/';
+  myApiUrl = 'ProyectoFinal/ProyectoFinal-Back/users.php';
   lista: User[] = [];
   private actualizarFormulario = new BehaviorSubject<User>({} as any);
 
@@ -17,6 +17,15 @@ export class userService {
 
 guardarUser(User: User): Observable<User> {
   return this.http.post<User>(this.myAppUrl+this.myApiUrl, User)
+}
+
+login(User: User): Observable<User> {
+  return this.http.post<User>(this.myAppUrl+'ProyectoFinal/ProyectoFinal-Back/login.php', User).pipe(
+                              catchError(this.errorHandler));
+}
+
+errorHandler(error: HttpErrorResponse){
+  return throwError(error.message || "Server Error");
 }
 
 eliminarUser(id:number): Observable<User> {

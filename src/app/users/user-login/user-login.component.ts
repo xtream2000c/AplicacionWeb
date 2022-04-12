@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/components/models/users';
+import { userService } from 'src/app/components/services/userService/user-form-service.service';
 
 @Component({
   selector: 'app-user-login',
@@ -9,10 +11,30 @@ import { Component, OnInit } from '@angular/core';
   }
 })
 export class UserLoginComponent implements OnInit {
-
-  constructor() { }
+  username:string;
+  password:string;
+  user = new User;
+  
+  constructor(private userService : userService) { }
 
   ngOnInit(): void {
+    
+  }
+
+  loginUser(){
+
+    this.user.username=this.username;
+    this.user.password=this.password;
+
+    this.userService.login(this.user).subscribe(data => {
+      sessionStorage.setItem('user', JSON.stringify(data))
+      console.log(data);
+      location.href='profile';
+    },
+    error=>{
+      alert('Usuario no encontrado');
+    })
+
   }
 
 }

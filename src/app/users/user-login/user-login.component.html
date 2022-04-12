@@ -4,18 +4,18 @@
             <h2>Iniciar sesion</h2>
         </div>
         <div class="infoFormulario">
-        <form action="" method="post" name="formulario" id="formulario">
+        <form name="formulario" id="formulario">
             <label for="usuario">Usuario </label>
             <br>
-            <input type="text" name="usuario" id="usuario">
+            <input type="text" name="usuario" id="usuario" [(ngModel)]="username">
             <br>
             <label for="contrasena">Contraseña </label>
             <br>
-            <input type="password" name="contrasena" id="contrasena">
+            <input type="password" name="contrasena" id="contrasena" [(ngModel)]="password">
             <br>
             <br>
             <input type="button" id="volver" onclick="location.href='index.html'" value="Volver">
-            <input type="submit" name="submit" id="submit">
+            <button name="submit" (click)="loginUser()" id="submit">Enviar</button>
         </form>
         <div id="errores"></div>
         </div>
