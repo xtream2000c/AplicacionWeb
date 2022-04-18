@@ -5,25 +5,28 @@
         </div>
         <div class="infoFormulario">
             <form name="formulario" id="formulario">
-                <label for="nombre">Nombre</label>
+                <mat-form-field class="" appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" name="name" [(ngModel)]="name">
+                </mat-form-field>
                 <br>
-                <input type="text" name="name" [(ngModel)]="name">
+                <mat-form-field class="" appearance="fill">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput type="text" name="email" id="email" [(ngModel)]="email">
+                </mat-form-field>
                 <br>
-                <label for="email">E-mail</label>
+                <mat-form-field class="" appearance="fill">
+                    <mat-label>Usuario</mat-label>
+                    <input matInput type="text" name="username" id="usuario" [(ngModel)]="username">
+                </mat-form-field>
                 <br>
-                <input type="text" name="email" id="email" [(ngModel)]="email">
+                <mat-form-field class="" appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" name="password" id="contrasena" [(ngModel)]="password">
+                </mat-form-field>
                 <br>
-                <label for="usuario">Usuario</label>
-                <br>
-                <input type="text" name="username" id="usuario" [(ngModel)]="username">
-                <br>
-                <label for="contrasena">Contraseña </label>
-                <br>
-                <input type="password" name="password" id="contrasena" [(ngModel)]="password">
-                <br>
-                <br>
-                <input type="button" id="volver" onclick="location.href=''" value="Volver">
-                <button (click)="registerUser()">Guardar</button>
+                <input type="button" class="formbtn" id="volver" onclick="location.href=''" value="Volver">
+                <button class="formbtn" (click)="registerUser()">Registrarse</button>
             </form>
         <div id="errores"></div>
         </div>
