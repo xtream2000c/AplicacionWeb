@@ -12,7 +12,7 @@
                 <br>
                 <mat-form-field class="" appearance="fill">
                     <mat-label>E-mail</mat-label>
-                    <input matInput type="text" name="email" id="email" [(ngModel)]="email">
+                    <input matInput type="email" name="email" id="email" [(ngModel)]="email">
                 </mat-form-field>
                 <br>
                 <mat-form-field class="" appearance="fill">
@@ -25,7 +25,7 @@
                     <input matInput type="password" name="password" id="contrasena" [(ngModel)]="password">
                 </mat-form-field>
                 <br>
-                <input type="button" class="formbtn" id="volver" onclick="location.href=''" value="Volver">
+                <input type="button" class="formbtn" id="volver" [routerLink]="['/']" value="Volver">
                 <button class="formbtn" (click)="registerUser()">Registrarse</button>
             </form>
         <div id="errores"></div>

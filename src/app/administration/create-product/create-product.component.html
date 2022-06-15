@@ -1,0 +1,34 @@
+<div class="center-screen">
+    <div class="formulario">
+        <div class="tituloFormulario">
+            <h2>Crear producto</h2>
+        </div>
+        <div class="infoFormulario">
+        <form name="formulario" id="formulario">
+            <mat-form-field class="" appearance="fill">
+                <mat-label>Nombre del producto</mat-label>
+                <input matInput type="text" name="productName" id="productName" [(ngModel)]="productName">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="" appearance="fill">
+                <mat-label>Precio</mat-label>
+                <input matInput type="number" name="productPrice" id="productPrice" [(ngModel)]="productPrice">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="" appearance="fill">
+                <mat-label>Stock</mat-label>
+                <input matInput type="number" name="productStock" id="productStock" [(ngModel)]="productStock">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="" appearance="fill">
+                <mat-label>Descripcion</mat-label>
+                <textarea matInput placeholder="Descripcion" name="productDescription" id="productDescription" [(ngModel)]="productDescription"></textarea>
+            </mat-form-field>
+            <br>
+            <input type="button" class="formbtn" id="volver" [routerLink]="['/']" value="Volver">
+            <button name="submit" class="formbtn" (click)="createProduct()" id="submit">Enviar</button>
+        </form>
+        <div id="errores"></div>
+        </div>
+    </div>
+</div>

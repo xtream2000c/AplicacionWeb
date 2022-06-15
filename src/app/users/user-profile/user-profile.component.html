@@ -6,6 +6,17 @@
                     <h1 id="usuario" >Usuario - {{username}}</h1>
                     <p id="nombreUsuario">Nombre - {{name}}</p>
                     <p id="emailUsuario">Email - {{email}}</p>
+                    <p [hidden]="admin"> Admin </p>
+                </div>
+            </div>
+
+            <div [hidden]="admin" class="mt-3 row">
+                <div class="col text-center">
+                    <button (click)="addProduct()">Añadir producto</button>
+                </div>
+
+                <div class="col text-center">
+                    <button (click)="productList()">Lista de productos</button>
                 </div>
             </div>
         </div>

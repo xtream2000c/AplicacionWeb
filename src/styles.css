@@ -30,19 +30,19 @@ body{
     border-radius: 25px;
     width: 300px;
     height: auto;
-    background: linear-gradient(to top, #11998e, #49a09d);
+    background: linear-gradient(to top, #11998e, #4aa19e);
     box-shadow: 0px 0px 25px ;
     padding-bottom: 20px;
 }
 
 .formbtn{
-    font-weight: bold;
-    font-size: 1.1em;
-    background-color:aquamarine;
-    padding: 5px;
+    
+    margin: 10px;
+    background-color: #11998e;
+    padding: 10px;
+    border: 1px solid black;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px;
-    margin: 5px
+    box-shadow: 0px 0px 5px;
 
 }
 .formulario input[type=submit]{
@@ -214,6 +214,7 @@ margin-right: 30px;
 button{
     background-color: #11998e;
     padding: 10px;
+    border: 1px solid black;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px;
+    box-shadow: 0px 0px 5px;
 }

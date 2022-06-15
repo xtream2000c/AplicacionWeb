@@ -1,6 +1,19 @@
 <div>
-    
-    <div class="row" id="productsList">
-        
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 g-4 mt-1 mb-5" id="productsList">
+        <ng-container *ngFor="let producto of productos">
+            <div class="col">
+                <div class="card h-100 m-auto"  id="{{producto._id.$oid}}">
+                <img src="./assets/images/PLD.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">{{producto.name}}</h3>
+                    <h4 class="card-title fw-bolder">{{producto.price}}€</h4>
+                    <p class="card-text">{{producto.description}}</p>
+                </div>
+                <div class="card-footer text-center"> 
+                <button type="button" (click)='addToCart(producto._id.$oid)'><i class="fas fa-cart-plus"></i> Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+        </ng-container>
     </div>
 </div>

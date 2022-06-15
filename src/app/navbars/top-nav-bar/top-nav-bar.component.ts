@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/core/models/products';
+import { CartService } from 'src/app/core/services/cartService/cart.service';
+import { LoginServiceService } from 'src/app/core/services/loginService/login-service.service';
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -6,48 +9,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-nav-bar.component.css']
 })
 export class TopNavBarComponent implements OnInit {
-  navItem1:string;
-  navItem2:string;
-  navItem1Icon:string;
-  navItem2Icon:string;
-  navItem1Text:string;
-  navItem2Text:string;
-  constructor() { }
 
-  ngOnInit(): void {
-    this.checkLoged();
+  navItem1:string = this.loginService.navItem1;
+  navItem2:string = this.loginService.navItem2;
+  navItem1Icon:string = this.loginService.navItem1Icon;
+  navItem2Icon:string = this.loginService.navItem2Icon;
+  navItem1Text:string = this.loginService.navItem1Text;
+  navItem2Text:string = this.loginService.navItem2Text;
+  cart : Product[]=[];
+
+  constructor( public loginService:LoginServiceService, public cartService:CartService ) {  }
+
+  async ngOnInit(): Promise<void> {
+    this.loginService.checkLoged();
+    let cart = await this.cartService.getCartContent();
+    if(cart){
+      this.cart = await this.cartService.getCartContent();
+    }else{
+      this.cartService.saveCartContent(this.cart);
+    }
   }
 
   clear(){
     if (sessionStorage.getItem('user')!= null) {
       sessionStorage.removeItem('user');
     }
-  }
-
-  checkLoged(){
-
-    if(sessionStorage.getItem('user')!= null){
-      
-      this.navItem1='profile';
-      this.navItem1Icon = 'person';
-      this.navItem1Text = 'Perfil';
-
-      this.navItem2='login';
-      this.navItem2Icon = 'logout';
-      this.navItem2Text = 'Cerrar sesion';
-
-    }
-    else{
-     
-      this.navItem1='register';
-      this.navItem1Icon = 'person_add';
-      this.navItem1Text = 'Registro';
-
-      this.navItem2='login';
-      this.navItem2Icon = 'person';
-      this.navItem2Text = 'Iniciar sesion';
-
-    }
+    this.loginService.checkLoged();
   }
 
 }

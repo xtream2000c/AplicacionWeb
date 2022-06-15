@@ -15,7 +15,7 @@
                 <input matInput type="password" name="contrasena" id="contrasena" [(ngModel)]="password">
             </mat-form-field>
             <br>
-            <input type="button" class="formbtn" id="volver" onclick="location.href='index.html'" value="Volver">
+            <input type="button" class="formbtn" id="volver" [routerLink]="['/']" value="Volver">
             <button name="submit" class="formbtn" (click)="loginUser()" id="submit">Enviar</button>
         </form>
         <div id="errores"></div>

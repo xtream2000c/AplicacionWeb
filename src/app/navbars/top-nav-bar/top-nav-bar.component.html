@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
 <!-- Lateral izquierdo -->
-        <a class="navbar-brand m-0 p-0" href="">
+        <a class="navbar-brand m-0 p-0" [routerLink]="['/']">
             <!-- <img src="images/PLD.png" height="36" alt=""> -->
             <span>Paula Love Designer</span>
         </a>
@@ -17,26 +17,36 @@
         <div class="collapse navbar-collapse" id="navbarsExample04">
             <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link " href="carrito" id="carrito">
+                    <a class="nav-link" [routerLink]="['/cart']" id="carrito">
+                        <span class="d-none d-md-inline-block start-100 translate-middle badge rounded-pill bg-danger">
+                            {{cart.length}}
+                            <span class="visually-hidden">Cart items</span>
+                        </span>
+
                         <div class="d-inline-flex align-items-center">
                             <span class="material-icons">shopping_cart</span>
                             <span class="my-auto ms-2">Carrito</span>
                         </div>
+
+                        <span class="d-md-none d-inline-block ms-4 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{cart.length}}
+                            <span class="visually-hidden">Cart items</span>
+                        </span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [href]="navItem1">
+                    <a class="nav-link" [routerLink]="this.loginService.navItem1">
                         <div class="d-inline-flex align-items-center">
-                            <span class="material-icons">{{navItem1Icon}}</span>
-                            <span class="my-auto ms-2">{{navItem1Text}}</span>
+                            <span class="material-icons">{{this.loginService.navItem1Icon}}</span>
+                            <span class="my-auto ms-2">{{this.loginService.navItem1Text}}</span>
                         </div>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [href]="navItem2" id="navItem2" (click)="clear()">
+                    <a class="nav-link" [routerLink]="this.loginService.navItem2" id="navItem2" (click)="clear()">
                         <div class="d-inline-flex align-items-center">
-                            <span class="material-icons">{{navItem2Icon}}</span>
-                            <span class="my-auto ms-2">{{navItem2Text}}</span>
+                            <span class="material-icons">{{this.loginService.navItem2Icon}}</span>
+                            <span class="my-auto ms-2">{{this.loginService.navItem2Text}}</span>
                         </div>
                     </a>
                 </li>

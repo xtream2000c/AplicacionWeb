@@ -5,18 +5,22 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NavbarsModule } from './navbars/navbars.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ComponentsModule } from './core/components/components.module';
+import { CommonModule } from "@angular/common";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NavbarsModule,
-    HttpClientModule
+    HttpClientModule,
+    ComponentsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

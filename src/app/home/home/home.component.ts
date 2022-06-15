@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Product } from 'src/app/core/models/products';
+import { CartService } from 'src/app/core/services/cartService/cart.service';
 import { LoadProductsService } from 'src/app/core/services/productServices/load-products.service'
 @Component({
   selector: 'app-home',
@@ -9,49 +12,35 @@ import { LoadProductsService } from 'src/app/core/services/productServices/load-
   }
 })
 export class HomeComponent implements OnInit {
+  cart:Product[] = [];
+  productos:Product[];
+  constructor(private LoadProductsService:LoadProductsService, public cartService:CartService, public router:Router) { }
 
-  constructor(private LoadProductsService:LoadProductsService) { }
+  async ngOnInit(): Promise<void> {
+    this.productos = await this.LoadProductsService.getProducts();
 
-  ngOnInit(): void {
-    this.cargarProductos();
+    let cart = await this.cartService.getCartContent();
+    if(cart){
+      this.cart = await this.cartService.getCartContent();
+    }else{
+      this.cartService.saveCartContent(this.cart);
+    }
   }
-  
-  async cargarProductos() {
-    var productList = this.LoadProductsService.getProducts();
-    var productsEl = document.getElementById('productsList')
-    console.log(productList);
 
-    (await productList).forEach(product => {
-      productsEl.innerHTML += `
-             <div class="col-md-6 col-lg-4 col-xl-3 mt-2">
-                 <div class="card m-auto" style="width: 18rem;" id="${product.id}">
-                 <div class="card-body">
-                     <h4 class="card-title">${product.name}</h4>
-                     <h5 class="card-title">${product.price}€</h5>
-                     <p class="card-text">${product.description}</p>
-                     <button id="aniadirCarrito(${product.id})"><i class="fas fa-cart-plus"></i> Añadir al carrito</button>
-                 </div>
-                </div>
-            </div>
-           `;
-    });
-
-    //Productos es un array de objetos, producto, que estan declarados en el archivo JSON
-    // productList.forEach((product) => {
-    //   productsEl.innerHTML += `
-    //         <div class="col-md-6 col-lg-4 col-xl-3 mt-2">
-    //             <div class="card m-auto" style="width: 18rem;" id="${producto.id}">
-    //             <img src="${producto.imagen}" alt="${producto.nombre}" class="card-img-top">
-    //             <div class="card-body">
-    //                 <h4 class="card-title">${producto.nombre}</h4>
-    //                 <h5 class="card-title">${producto.precio}€</h5>
-    //                 <p class="card-text">${producto.descripcion}</p>
-    //                 <button id="aniadirCarrito(${producto.id})"><i class="fas fa-cart-plus"></i> Añadir al carrito</button>
-    //             </div>
-    //             </div>
-    //         </div>
-    //       `;
-    // });
-}
+  async addToCart(id:string){
+    var product = await this.LoadProductsService.getProductById(id);
+    if(this.cart.length>=1){
+      
+      this.cart.push(product);
+      await this.cartService.saveCartContent(this.cart);
+      window.location.reload();
+     
+    }else{
+      this.cart.push(product);
+      await this.cartService.saveCartContent(this.cart);
+      window.location.reload();
+    }
+    console.log(this.cart);
+  }
 
 }

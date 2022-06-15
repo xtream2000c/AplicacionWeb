@@ -1,0 +1,18 @@
+<div class="container">
+    <ng-container *ngFor="let producto of productos; let i = index">
+        <div class="p-3 bg-light my-2 row">
+            <img class="col-12 col-md-2" src="./assets/images/PLD.png" alt="">
+            <h2 class="col-12 col-md-2 m-0">{{producto.name}}</h2>
+            <p class="col-12 col-md-5">{{producto.description}}</p>
+            <p class="col-6 col-md-2 text-md-end">{{producto.price}} €</p>
+            <div class="col-6 col-md-1 text-end flex" >
+                <div (click)="deleteProduct(producto._id.$oid)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </div>
+                <div (click)="editProduct(producto._id.$oid)">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
